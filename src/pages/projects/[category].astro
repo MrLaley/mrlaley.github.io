@@ -1,0 +1,54 @@
+---
+import BaseHead from '../../components/BaseHead.astro';
+import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro';
+import { getCollection } from 'astro:content';
+
+export async function getStaticPaths() {
+	return [
+		{ params: { category: 'individual' } },
+		{ params: { category: 'university' } }
+	];
+}
+
+const { category } = Astro.params;
+const allProjects = (await getCollection('projects')).sort(
+	(a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf()
+);
+const filteredProjects = allProjects.filter((project) => project.data.category === category);
+---
+
+<!doctype html>
+<html lang="en">
+	<head>
+		<BaseHead title={`${category.charAt(0).toUpperCase() + category.slice(1)} Projects`} description="List of my projects" />
+		<style>
+			main { max-width: 960px; margin: auto; padding: 3em 1em; font-family: sans-serif; }
+			ul { list-style-type: none; padding: 0; display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 2rem; }
+			li { border: 1px solid #ddd; border-radius: 8px; overflow: hidden; transition: 0.2s; }
+			li:hover { box-shadow: 0 4px 12px rgba(0,0,0,0.1); }
+			a { text-decoration: none; color: inherit; display: block; padding: 1.5rem; }
+			h4 { margin: 0 0 0.5rem 0; font-size: 1.2rem; color: #222; }
+			p { margin: 0; color: #555; font-size: 0.95rem; }
+			.back-link { display: inline-block; margin-bottom: 2rem; color: #0055ff; text-decoration: none; font-weight: bold; }
+		</style>
+	</head>
+	<body>
+		<Header />
+		<main>
+			<a href="/projects" class="back-link">&larr; Back to Categories</a>
+			<h1>{category.charAt(0).toUpperCase() + category.slice(1)} Projects</h1>
+			<ul>
+				{filteredProjects.map((project) => (
+					<li>
+						<a href={`/projects/${project.id}/`}>
+							<h4>{project.data.title}</h4>
+							<p>{project.data.description}</p>
+						</a>
+					</li>
+				))}
+			</ul>
+		</main>
+		<Footer />
+	</body>
+</html>

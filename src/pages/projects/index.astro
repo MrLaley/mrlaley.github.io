@@ -1,0 +1,40 @@
+---
+import BaseHead from '../../components/BaseHead.astro';
+import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro';
+import { SITE_TITLE, SITE_DESCRIPTION } from '../../consts';
+---
+
+<!doctype html>
+<html lang="en">
+	<head>
+		<BaseHead title={`Projects - ${SITE_TITLE}`} description={SITE_DESCRIPTION} />
+		<style>
+			main { max-width: 960px; margin: auto; padding: 3em 1em; font-family: sans-serif; }
+			.grid-sections { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; margin-top: 2rem; }
+			.block { background-color: #f8f9fa; padding: 2rem; border-radius: 12px; text-align: center; text-decoration: none; color: #1a1a1a; transition: transform 0.2s, box-shadow 0.2s; border: 1px solid #eaeaea; }
+			.block:hover { transform: translateY(-5px); box-shadow: 0 10px 20px rgba(0,0,0,0.05); }
+			.block h2 { margin: 0 0 1rem 0; color: #0055ff; }
+			.block p { margin: 0; color: #666; line-height: 1.5; }
+		</style>
+	</head>
+	<body>
+		<Header />
+		<main>
+			<h1>Portfolio & Projects</h1>
+			<p>Select a category to view the projects I have developed:</p>
+			
+			<div class="grid-sections">
+				<a href="/projects/individual" class="block">
+					<h2>Individual Projects</h2>
+					<p>Applications, tools, and experiments created independently to expand my skill set.</p>
+				</a>
+				<a href="/projects/university" class="block">
+					<h2>University Projects</h2>
+					<p>Academic challenges and collaborative engineering projects at the University of Twente.</p>
+				</a>
+			</div>
+		</main>
+		<Footer />
+	</body>
+</html>
