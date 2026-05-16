@@ -10,7 +10,7 @@ const blog = defineCollection({
 		pubDate: z.coerce.date(),
 		updatedDate: z.coerce.date().optional(),
 		heroImage: image().optional(), // Ahora Astro entenderá que es una imagen local
-		category: z.string().default('Computer Science'),
+		category: z.enum(['computer-science', 'sports']).default('computer-science'),
 	}),
 });
 
