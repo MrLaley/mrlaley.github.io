@@ -2,7 +2,6 @@
 
 [![Website](https://img.shields.io/badge/Website-mrlaley.github.io-007bff?style=flat-square&logo=github)](https://mrlaley.github.io)
 [![Tech Stack](https://img.shields.io/badge/Built%20With-Astro%206.x-ff5d01?style=flat-square&logo=astro)](https://astro.build/)
-[![License](https://img.shields.io/badge/License-MIT-green?style=flat-square)](LICENSE)
 
 This repository contains the source code for my personal portfolio and blog, hosted on GitHub Pages: **[mrlaley.github.io](https://mrlaley.github.io)**. 
 
