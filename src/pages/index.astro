@@ -9,40 +9,78 @@ import { SITE_DESCRIPTION, SITE_TITLE } from '../consts';
 <html lang="en">
 	<head>
 		<BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
+		<style>
+			.hero {
+				display: flex;
+				align-items: center;
+				gap: 2rem;
+				margin-bottom: 2rem;
+			}
+			.hero img {
+				width: 250px;
+				height: 250px;
+				border-radius: 50%;
+				object-fit: cover;
+				box-shadow: var(--box-shadow);
+			}
+			.hero-content {
+				flex: 1;
+			}
+			.skills-list {
+				margin-top: 1rem;
+				padding-left: 1.5rem;
+			}
+			.skills-list li {
+				margin-bottom: 0.5rem;
+			}
+			@media (max-width: 768px) {
+				.hero {
+					flex-direction: column-reverse;
+					text-align: center;
+				}
+			}
+			.gradient-text {
+				background: linear-gradient(135deg, #007bff 0%, #00ff88 100%);
+				-webkit-background-clip: text;
+				-webkit-text-fill-color: transparent;
+				display: inline-block;
+			}
+			.subtitle {
+				font-size: 1.2rem;
+				color: var(--gray);
+				margin-bottom: 1rem;
+			}
+		</style>
 	</head>
 	<body>
 		<Header />
 		<main>
-			<h1>🧑‍🚀 Hello, Astronaut!</h1>
-			<p>
-				Welcome to the official <a href="https://astro.build/">Astro</a> blog starter template. This template
-				serves as a lightweight, minimally-styled starting point for anyone looking to build a personal
-				website, blog, or portfolio with Astro.
-			</p>
-			<p>
-				This template comes with a few integrations already configured in your
-				<code>astro.config.mjs</code> file. You can customize your setup with
-				<a href="https://astro.build/integrations">Astro Integrations</a> to add tools like Tailwind,
-				React, or Vue to your project.
-			</p>
-			<p>Here are a few ideas on how to get started with the template:</p>
-			<ul>
-				<li>Edit this page in <code>src/pages/index.astro</code></li>
-				<li>Edit the site header items in <code>src/components/Header.astro</code></li>
-				<li>Add your name to the footer in <code>src/components/Footer.astro</code></li>
-				<li>Check out the included blog posts in <code>src/content/blog/</code></li>
-				<li>Customize the blog post page layout in <code>src/layouts/BlogPost.astro</code></li>
-			</ul>
-			<p>
-				Have fun! If you get stuck, remember to
-				<a href="https://docs.astro.build/">read the docs</a>
-				or <a href="https://astro.build/chat">join us on Discord</a> to ask questions.
-			</p>
-			<p>
-				Looking for a blog template with a bit more personality? Check out
-				<a href="https://github.com/Charca/astro-blog-template">astro-blog-template</a>
-				by <a href="https://twitter.com/Charca">Maxi Ferreira</a>.
-			</p>
+			<section class="hero">
+				<!-- NOTE: To update this image, place your photo as 'profile.jpg' in the 'public/' directory -->
+				<img src="/profile.jpg" alt="Jaime Molina" />
+				<div class="hero-content">
+					<h1 class="gradient-text">Jaime Molina</h1>
+					<div class="subtitle">Engineer | Developer | Team Coordinator</div>
+					<p>
+						<strong>Technical Computer Science Student</strong> at University of Twente | Software Engineering & Systems | Full-Stack & Low-Level Programming | Cybersecurity Enthusiast.
+					</p>
+					<p>
+						Originally from Spain with a global mindset. My education is centered on solving complex engineering challenges through project-based learning.
+					</p>
+				</div>
+			</section>
+
+			<section>
+				<h3>Top Skills & Experience</h3>
+				<ul class="skills-list">
+					<li><strong>Software & Systems:</strong> Experienced in designing distributed and concurrent systems in Java, as well as low-level programming (C/Assembly) with direct hardware control.</li>
+					<li><strong>AI & Machine Learning:</strong> Integrating machine learning capabilities to develop intelligent systems and predictive models.</li>
+					<li><strong>Cybersecurity:</strong> A solid foundation in ethical hacking, focused on network infrastructure protection and data integrity.</li>
+					<li><strong>Methodologies:</strong> Applying Agile (Scrum) methodologies and algorithmic efficiency principles to deliver secure, scalable, and high-performance solutions.</li>
+					<li><strong>Algorithms:</strong> Specialized in efficient algorithm design and graph theory, specifically working on solving NP-complete problems.</li>
+					<li><strong>Leadership & Organization:</strong> Strong capacity for teamwork, mediation, and conflict resolution in multicultural environments. Decisive and proactive in organizing workflows that maximize group efficiency.</li>
+				</ul>
+			</section>
 		</main>
 		<Footer />
 	</body>
