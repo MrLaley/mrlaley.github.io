@@ -1,0 +1,63 @@
+---
+import BaseHead from '../components/BaseHead.astro';
+import Footer from '../components/Footer.astro';
+import Header from '../components/Header.astro';
+import { SITE_TITLE } from '../consts';
+---
+
+<!doctype html>
+<html lang="en">
+	<head>
+		<BaseHead title={`404 - Page Not Found | ${SITE_TITLE}`} description="Oops! You seem to be lost." />
+		<style>
+			.not-found {
+				display: flex;
+				flex-direction: column;
+				align-items: center;
+				justify-content: center;
+				text-align: center;
+				padding: 4rem 1rem;
+			}
+			.not-found img {
+				max-width: 100%;
+				width: 500px;
+				margin-bottom: 2rem;
+				border-radius: 12px;
+			}
+			.not-found h1 {
+				font-size: 4rem;
+				margin-bottom: 0.5rem;
+				color: var(--accent);
+			}
+			.not-found p {
+				font-size: 1.2rem;
+				margin-bottom: 2rem;
+			}
+			.home-btn {
+				display: inline-block;
+				padding: 0.8rem 1.5rem;
+				background-color: var(--accent);
+				color: white !important;
+				text-decoration: none;
+				border-radius: 8px;
+				font-weight: bold;
+				transition: background-color 0.3s ease;
+			}
+			.home-btn:hover {
+				background-color: var(--accent-dark);
+			}
+		</style>
+	</head>
+	<body>
+		<Header />
+		<main>
+			<section class="not-found">
+				<img src="/zoro-404.png" alt="Lost on the web" />
+				<h1>404</h1>
+				<p>Oops! Looks like you took a wrong turn and ended up somewhere unexpected.</p>
+				<a href="/" class="home-btn">Return Home</a>
+			</section>
+		</main>
+		<Footer />
+	</body>
+</html>
