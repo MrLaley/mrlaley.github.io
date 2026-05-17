@@ -29,7 +29,8 @@ const categoryTitle = category === 'computer-science' ? 'Computer Science' : 'Sp
 		<BaseHead title={`${categoryTitle} Blog`} description={SITE_DESCRIPTION} />
 		<style>
 			main {
-				width: 960px;
+				max-width: 960px;
+				width: 100%;
 			}
 			ul {
 				display: flex;
@@ -87,9 +88,22 @@ const categoryTitle = category === 'computer-science' ? 'Computer Science' : 'Sp
                 text-decoration: none;
                 font-weight: bold;
             }
+			.empty-state {
+				text-align: center;
+				padding: 3rem 1.5rem;
+				border: 1px dashed var(--gray-border);
+				border-radius: 12px;
+				background: var(--panel-bg);
+				color: var(--gray);
+				margin-top: 1.5rem;
+			}
+			.empty-state p {
+				margin: 0;
+				font-size: 1.1rem;
+			}
 			@media (max-width: 720px) {
 				ul {
-					gap: 0.5em;
+					gap: 1.5em;
 				}
 				ul li {
 					width: 100%;
@@ -101,6 +115,9 @@ const categoryTitle = category === 'computer-science' ? 'Computer Science' : 'Sp
 				ul li:first-child .title {
 					font-size: 1.563em;
 				}
+				.back-link {
+					margin-bottom: 1.5rem;
+				}
 			}
 		</style>
 	</head>
@@ -108,24 +125,31 @@ const categoryTitle = category === 'computer-science' ? 'Computer Science' : 'Sp
 		<Header />
 		<main>
             <a href="/blog" class="back-link">&larr; Back to Categories</a>
+			<h1>{categoryTitle} Articles</h1>
 			<section>
-				<ul>
-					{
-						filteredPosts.map((post) => (
-							<li>
-								<a href={`/blog/${post.id}/`}>
-									{post.data.heroImage && (
-										<Image width={720} height={360} src={post.data.heroImage} alt="" />
-									)}
-									<h4 class="title">{post.data.title}</h4>
-									<p class="date">
-										<FormattedDate date={post.data.pubDate} />
-									</p>
-								</a>
-							</li>
-						))
-					}
-				</ul>
+				{filteredPosts.length === 0 ? (
+					<div class="empty-state">
+						<p>No articles published in this category yet. Check back soon!</p>
+					</div>
+				) : (
+					<ul>
+						{
+							filteredPosts.map((post) => (
+								<li>
+									<a href={`/blog/${post.id}/`}>
+										{post.data.heroImage && (
+											<Image width={720} height={360} src={post.data.heroImage} alt="" />
+										)}
+										<h4 class="title">{post.data.title}</h4>
+										<p class="date">
+											<FormattedDate date={post.data.pubDate} />
+										</p>
+									</a>
+								</li>
+							))
+						}
+					</ul>
+				)}
 			</section>
 		</main>
 		<Footer />

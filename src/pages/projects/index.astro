@@ -14,6 +14,9 @@ import { SITE_TITLE, SITE_DESCRIPTION } from '../../consts';
 			.grid-sections { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; margin-top: 2rem; }
 			.block h2 { margin: 0 0 1rem 0; color: var(--accent); }
 			.block p { margin: 0; line-height: 1.5; }
+			@media (max-width: 720px) {
+				.grid-sections { grid-template-columns: 1fr; gap: 1.5rem; }
+			}
 		</style>
 	</head>
 	<body>

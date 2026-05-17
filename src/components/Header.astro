@@ -81,9 +81,19 @@ import HeaderLink from './HeaderLink.astro';
 	:global(.dark) .moon { display: none; }
 	:global(.dark) .sun { display: block; }
 	.sun { display: none; }
+	
 	@media (max-width: 720px) {
+		nav {
+			flex-direction: column;
+			gap: 0.5rem;
+			padding: 1rem 0;
+			text-align: center;
+		}
+		nav a {
+			padding: 0.5rem;
+		}
 		.social-links {
-			display: none;
+			margin-top: 0.5rem;
 		}
 	}
 </style>
