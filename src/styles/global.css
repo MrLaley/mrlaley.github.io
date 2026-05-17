@@ -4,51 +4,58 @@
   License MIT: https://github.com/HermanMartinus/bearblog/blob/master/LICENSE.md
  */
 
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+
 :root {
-	--accent: #2337ff;
-	--accent-dark: #000d8a;
-	--black: 15, 18, 25;
-	--gray: 96, 115, 159;
-	--gray-light: 229, 233, 240;
-	--gray-dark: 34, 41, 57;
-	--gray-gradient: rgba(var(--gray-light), 50%), #fff;
+	--accent: #2563eb;
+	--accent-dark: #1d4ed8;
+	--black: 15, 23, 42;
+	--gray: 100, 116, 139;
+	--gray-light: 248, 250, 252;
+	--gray-border: #e2e8f0;
+	--gray-dark: 51, 65, 85;
+	--gray-gradient: #f8fafc, #fff;
 	--box-shadow:
-		0 2px 6px rgba(var(--gray), 25%), 0 8px 24px rgba(var(--gray), 33%),
-		0 16px 32px rgba(var(--gray), 33%);
-	--bg-color: #fff;
-	--text-color: rgb(var(--gray-dark));
-	--heading-color: rgb(var(--black));
+		0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -2px rgba(0, 0, 0, 0.05);
+	--bg-color: #ffffff;
+	--text-color: #334155;
+	--heading-color: #0f172a;
+	--header-bg: rgba(255, 255, 255, 0.9);
+	--panel-bg: #f8fafc;
 }
 
 html.dark {
-	--accent: #6b7cff;
-	--accent-dark: #a1adff;
-	--black: 240, 242, 245;
-	--gray: 160, 174, 192;
-	--gray-light: 45, 55, 72;
-	--gray-dark: 200, 210, 220;
-	--gray-gradient: rgba(var(--gray-light), 50%), #1a202c;
+	--accent: #3b82f6;
+	--accent-dark: #60a5fa;
+	--black: 248, 250, 252;
+	--gray: 148, 163, 184;
+	--gray-light: 30, 41, 59;
+	--gray-border: #334155;
+	--gray-dark: 203, 213, 225;
+	--gray-gradient: #0f172a, #0b0f19;
 	--box-shadow:
-		0 2px 6px rgba(0,0,0, 0.25), 0 8px 24px rgba(0,0,0, 0.33),
-		0 16px 32px rgba(0,0,0, 0.33);
-	--bg-color: #1a202c;
-	--text-color: rgb(var(--gray-dark));
-	--heading-color: rgb(var(--black));
+		0 4px 6px -1px rgba(0, 0, 0, 0.2), 0 2px 4px -2px rgba(0, 0, 0, 0.2);
+	--bg-color: #0f172a;
+	--text-color: #cbd5e1;
+	--heading-color: #f8fafc;
+	--header-bg: rgba(15, 23, 42, 0.9);
+	--panel-bg: #1e293b;
 }
 body {
-	font-family: var(--font-atkinson);
+	font-family: 'Inter', sans-serif;
 	margin: 0;
 	padding: 0;
 	text-align: left;
 	background-color: var(--bg-color);
-	background-image: linear-gradient(var(--gray-gradient));
+	background-image: linear-gradient(180deg, var(--gray-gradient));
 	background-repeat: no-repeat;
 	background-size: 100% 600px;
 	word-wrap: break-word;
 	overflow-wrap: break-word;
 	color: var(--text-color);
-	font-size: 20px;
-	line-height: 1.7;
+	font-size: 18px;
+	line-height: 1.6;
+	transition: background-color 0.3s ease, color 0.3s ease;
 }
 main {
 	width: 720px;
@@ -151,12 +158,38 @@ hr {
 	height: 1px;
 	width: 1px;
 	overflow: hidden;
-	/* IE6, IE7 - a 0 height clip, off to the bottom right of the visible 1px box */
 	clip: rect(1px 1px 1px 1px);
-	/* maybe deprecated but we need to support legacy browsers */
 	clip: rect(1px, 1px, 1px, 1px);
-	/* modern browsers, clip-path works inwards from each corner */
 	clip-path: inset(50%);
-	/* added line to stop words getting smushed together (as they go onto separate lines and some screen readers do not understand line feeds as a space */
 	white-space: nowrap;
+}
+
+/* Modern Panel & Card helper styles */
+.panel {
+	background: var(--panel-bg);
+	border: 1px solid var(--gray-border);
+	border-radius: 12px;
+	padding: 1.5rem;
+	margin-bottom: 1.5rem;
+	box-shadow: var(--box-shadow);
+	transition: background-color 0.3s ease, border-color 0.3s ease;
+}
+
+.clickable-card {
+	background: var(--panel-bg);
+	border: 1px solid var(--gray-border);
+	border-radius: 12px;
+	padding: 1.5rem;
+	margin-bottom: 1.5rem;
+	box-shadow: var(--box-shadow);
+	cursor: pointer;
+	transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease, background-color 0.3s ease;
+	text-decoration: none;
+	display: block;
+	color: inherit;
+}
+.clickable-card:hover {
+	transform: translateY(-2px);
+	box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.05), 0 4px 6px -4px rgba(0, 0, 0, 0.05);
+	border-color: var(--accent);
 }
